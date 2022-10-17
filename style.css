@@ -31,23 +31,35 @@ footer {
 }
 
 body {
-  background-color: cornflowerblue;
   margin: 0;
   font-family: rubik;
   color: white;
+
+  /* background-image: url("https://images7.alphacoders.com/592/592678.jpg"); */
+  background-image: url("https://i.pinimg.com/originals/7a/59/e6/7a59e6b2bff603793ce1777dc47a8502.png");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  /*   
+  background-repeat: no-repeat;
+  background-position: center center; */
 }
 
 header {
-  background-color: darkgrey;
+  background-color: rgba(0, 0, 0, 0.938);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  width: 100%;
   color: black;
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
 header h1 {
+  color: white;
   text-transform: uppercase;
   font-size: 54px;
   padding-left: 30px;
@@ -61,6 +73,7 @@ header h1 {
 }
 
 .searcher i {
+  color: white;
   padding-top: 2px;
   font-size: 20px;
 }
@@ -74,7 +87,8 @@ header h1 {
   list-style: none;
   width: 150px;
   padding: 40px;
-  background-color: #f4f4f4;
+  /* background-color: #f4f4f4; */
+  background-color: rgba(0, 0, 0, 0.722);
   color: #222;
   text-align: center;
   border-radius: 20px;
@@ -85,6 +99,7 @@ header h1 {
   font-size: 25px;
   font-weight: normal;
   margin-bottom: 10px;
+  color: white;
 }
 
 .card-subtitle {

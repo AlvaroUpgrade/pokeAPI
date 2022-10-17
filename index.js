@@ -52,6 +52,14 @@ function getOnePokemon(url) {
     );
 }
 
+const colorsSetter = (types, html) => {
+  types.forEach((type) => {
+    console.log(type.name);
+    html.style.backgroundColor;
+  });
+
+};
+
 function renderPokemons(pokemonsArray) {
   pokemonsArray.forEach((pokemon) => {
     const li$$ = document.createElement("li");
@@ -74,6 +82,8 @@ function renderPokemons(pokemonsArray) {
       div$$.classList.add("card-subtitle");
       div$$.textContent = pokemon.types[type].type.name;
       div$$.style.backgroundColor = "red";
+
+      colorsSetter(pokemon.types, div$$);
 
       li$$.appendChild(div$$);
     }
