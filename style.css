@@ -1,0 +1,126 @@
+/* @import url("http://fonts.cdnfonts.com/css/pokemon-solid");
+
+* {
+  margin: 0px;
+}
+
+header {
+  background-color: beige;
+  font-family: 'Pokemon Solid', sans-serif; 
+  font-size: 20px;                                        
+  height: 15vh;
+  
+}
+
+header h1{
+    border: 2px solid red;
+    width: fit-content;
+}
+
+main {
+  background-color: aquamarine;
+  height: 80vh;
+}
+
+footer {
+  background-color: cadetblue;
+  height: 5vh;
+} */
+* {
+  margin: 0;
+}
+
+body {
+  background-color: cornflowerblue;
+  margin: 0;
+  font-family: rubik;
+  color: white;
+}
+
+header {
+  background-color: darkgrey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+header h1 {
+  text-transform: uppercase;
+  font-size: 54px;
+  padding-left: 30px;
+}
+
+.searcher {
+  display: flex;
+  justify-content: space-around;
+  width: 20%;
+  margin-right: 100px;
+}
+
+.searcher i {
+  padding-top: 2px;
+  font-size: 20px;
+}
+
+.container {
+  padding: 40px;
+  margin: 0 auto;
+}
+
+.card {
+  list-style: none;
+  width: 150px;
+  padding: 40px;
+  background-color: #f4f4f4;
+  color: #222;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.card-title {
+  text-transform: uppercase;
+  font-size: 25px;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
+.card-subtitle {
+  font-weight: lighter;
+  color: #666;
+  display: inline;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.card-image {
+  height: 180px;
+}
+
+#pokedex {
+  padding-inline-start: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
+  grid-gap: 30px;
+}
+
+.card:hover {
+  animation: bounce 0.5s linear;
+}
+
+@keyframes bounce {
+  20% {
+    transform: translateY(-6px);
+  }
+  40% {
+    transform: translateY(0px);
+  }
+  60% {
+    transform: translateY(-2px);
+  }
+  80% {
+    transform: translateY(-0px);
+  }
+}
