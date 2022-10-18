@@ -1,12 +1,3 @@
-// console.log("prueba");
-
-// Requisitos
-// -Obtener lista pokedex y guardar en variable
-// -Obtener el listado de todos los pokemons
-// -Obtener todos los pokemons individuales uno a uno
-// -Para obtener todos los pokemons, me dice el ejercicio que debo iterar uno por uno.
-// -Añadir al DOM los pokemons, dentro del div pokedex.
-
 const pokedex$$ = document.querySelector("#pokedex");
 const ALL_POKEMONS_INFO = [];
 const typeColors = {
@@ -30,8 +21,9 @@ const typeColors = {
   fairy: "#D685AD",
 };
 
+//Recoge 
 function getAllPokemons() {
-  return fetch("https://pokeapi.co/api/v2/pokemon?limit=20")
+  return fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
     .then((response) => response.json())
     .then((response) => {
       return response.results;
@@ -41,6 +33,7 @@ function getAllPokemons() {
     );
 }
 
+//Recoge datos de la API segun la url introducida por parametro
 function getOnePokemon(url) {
   return fetch(url)
     .then((response) => response.json())
@@ -52,20 +45,56 @@ function getOnePokemon(url) {
     );
 }
 
-const colorsSetter = (type, html$$) => {
-  html$$.style.backgroundColor = typeColors[type];
+const colorsSetter = (type, htmlElement$$) => {
+  htmlElement$$.style.backgroundColor = typeColors[type];
+};
+
+const findStats = (pokemonName, card) => {
+  for (const attributes of ALL_POKEMONS_INFO) {
+    if (pokemonName === attributes.name) {
+      console.log("Estas en " + pokemonName);
+      const divStats$$ = document.createElement("div");
+      divStats$$.className = "stats-numbers";
+      for (const specificStat of attributes.stats) {
+        card.innerHTML = `
+      <div class="stats-title">
+        <p>Hp</p>
+        <p>Attack</p>
+        <p>Defense</p>
+        <p>Sp. Atk</p>
+        <p>Sp. Def</p>
+        <p>Speed</p>
+      </div>
+      `;
+
+        const numbersStats$$ = document.createElement("p");
+        numbersStats$$.textContent = specificStat.base_stat;
+        divStats$$.appendChild(numbersStats$$);
+
+        // console.log("Stats ", specificStat.base_stat);
+      }
+      card.appendChild(divStats$$);
+    }
+    // console.log("Name:" ,attributes.name);
+  }
 };
 
 const displayStats = () => {
   const allCardsArray = document.querySelectorAll(".card");
 
-  for (const cards of allCardsArray) {
-    cards.addEventListener("mouseover", function () {
-      cards.innerHTML = "";
-      cards.className = "card-stats";
+  for (const card of allCardsArray) {
+    card.addEventListener("mouseover", function () {
+      const selectorOfPokemonName$$ = card.querySelector("p");
+      var pokemonName = selectorOfPokemonName$$.textContent;
+      // console.log("Nombre: ", nameOfPoke);
+
+      card.className = "card-stats";
+
       //funcion que trae las stats
+      findStats(pokemonName, card);
     });
-    cards.addEventListener("mouseout", function () {
+
+    card.addEventListener("mouseout", function () {
       pokedex$$.innerHTML = "";
       renderPokemons(ALL_POKEMONS_INFO);
       displayStats();
@@ -110,7 +139,7 @@ function renderPokemons(pokemonsArray) {
 
     pokedex$$.appendChild(li$$);
   });
-  console.log("Se renderizan los pokemons");
+  // console.log("Se renderizan los pokemons");
 }
 
 //Funcion para buscar un pokemon
@@ -140,7 +169,7 @@ function searchOnePokemon() {
 
 // Funcion que arranca la web
 async function init() {
-  console.log("Cargado mi DOM, ejecuto JS");
+  // console.log("Cargado mi DOM, ejecuto JS");
 
   const allPokemons = await getAllPokemons();
   // console.log("allPokemons" , allPokemons)
@@ -150,7 +179,7 @@ async function init() {
     ALL_POKEMONS_INFO.push(pokemonIndividualInfo);
   }
 
-  console.log("ALL_POKEMONS_INFO: ", ALL_POKEMONS_INFO);
+  // console.log("ALL_POKEMONS_INFO: ", ALL_POKEMONS_INFO);
 
   //Desplegar todos los pokemons almacenados en el array traidos de la API
   renderPokemons(ALL_POKEMONS_INFO);

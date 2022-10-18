@@ -38,8 +38,7 @@ body {
   /* background-image: url("https://images7.alphacoders.com/592/592678.jpg"); */
   background-image: url("https://i.pinimg.com/originals/7a/59/e6/7a59e6b2bff603793ce1777dc47a8502.png");
   background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   position: relative;
   /*   
   background-repeat: no-repeat;
@@ -112,7 +111,6 @@ header h1 {
   color: white;
   border-radius: 2px;
   width: 40px;
-  text-align: center;
   margin-bottom: 5px;
   padding-right: 15px;
   padding-left: 15px;
@@ -124,14 +122,35 @@ header h1 {
 
 .card-stats {
   display: flex;
-  justify-content: center;
-  flex-direction: column;
+  justify-content: space-evenly;
   list-style: none;
   width: 150px;
   padding: 30px;
-  background-color: aquamarine;
-  text-align: center;
+  color: black;
+  background-color: white;
+
   border-radius: 20px;
+}
+
+.stats-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: fit-content;
+  text-align: center;
+}
+
+.stats-numbers {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+}
+.stats-numbers p {
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 5px 5px 5px;
 }
 
 #pokedex {
