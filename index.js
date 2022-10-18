@@ -52,7 +52,7 @@ const colorsSetter = (type, htmlElement$$) => {
 const findStats = (pokemonName, card) => {
   for (const attributes of ALL_POKEMONS_INFO) {
     if (pokemonName === attributes.name) {
-      console.log("Estas en " + pokemonName);
+      // console.log("Estas en " + pokemonName);
       const divStats$$ = document.createElement("div");
       divStats$$.className = "stats-numbers";
       for (const specificStat of attributes.stats) {
