@@ -52,12 +52,25 @@ function getOnePokemon(url) {
     );
 }
 
-const colorsSetter = (types, html) => {
-  types.forEach((type) => {
-    console.log(type.name);
-    html.style.backgroundColor;
-  });
+const colorsSetter = (type, html$$) => {
+  html$$.style.backgroundColor = typeColors[type];
+};
 
+const displayStats = () => {
+  const allCardsArray = document.querySelectorAll(".card");
+
+  for (const cards of allCardsArray) {
+    cards.addEventListener("mouseover", function () {
+      cards.innerHTML = "";
+      cards.className = "card-stats";
+      //funcion que trae las stats
+    });
+    cards.addEventListener("mouseout", function () {
+      pokedex$$.innerHTML = "";
+      renderPokemons(ALL_POKEMONS_INFO);
+      displayStats();
+    });
+  }
 };
 
 function renderPokemons(pokemonsArray) {
@@ -73,20 +86,27 @@ function renderPokemons(pokemonsArray) {
     p$$.classList.add("card-title");
     p$$.textContent = pokemon.name;
 
+    const typesContainer$$ = document.createElement("div");
+    typesContainer$$.classList.add("types-container");
+
     li$$.appendChild(img$$);
     li$$.appendChild(p$$);
 
     for (const type in pokemon.types) {
-      // console.log("Result " + pokemon.types[type].type.name);
+      // console.log("Se crea div");
       const div$$ = document.createElement("div");
+      // console.log("Se le añade clase al div");
       div$$.classList.add("card-subtitle");
+      // console.log("Se le aplica el contenido del div");
       div$$.textContent = pokemon.types[type].type.name;
-      div$$.style.backgroundColor = "red";
 
-      colorsSetter(pokemon.types, div$$);
+      // console.log("Entra dentro de la funcion colorSetter");
+      colorsSetter(pokemon.types[type].type.name, div$$);
 
-      li$$.appendChild(div$$);
+      typesContainer$$.appendChild(div$$);
     }
+
+    li$$.appendChild(typesContainer$$);
 
     pokedex$$.appendChild(li$$);
   });
@@ -110,9 +130,9 @@ function searchOnePokemon() {
           (poke) => poke.name === pokemon.name
         );
         renderPokemons(searchedPokemon);
+        inputSearcher.value = "";
       } else if (inputContent == "") {
-        console.log("Click con input vacio");
-        renderPokemons(ALL_POKEMONS_INFO);
+        location.reload();
       }
     }
   });
@@ -134,8 +154,12 @@ async function init() {
 
   //Desplegar todos los pokemons almacenados en el array traidos de la API
   renderPokemons(ALL_POKEMONS_INFO);
+
   //Buscar un pokemon
   searchOnePokemon();
+
+  //Desplegar stat
+  displayStats();
 }
 
 window.onload = init;
