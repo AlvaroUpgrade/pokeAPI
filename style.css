@@ -43,7 +43,7 @@ header h5 {
 
 .searcher {
   display: flex;
-  box-sizing: border-box;
+  box-sizing: content-box;
   width: 30%;
   margin-right: 100px;
 }
@@ -87,6 +87,8 @@ header h5 {
   background-color: white;
   text-align: center;
   border-radius: 20px;
+  border-top: 5px cornflowerblue solid;
+  border-right: 5px cornflowerblue solid;
 }
 
 .card-title {
@@ -124,8 +126,9 @@ header h5 {
   padding: 30px;
   color: black;
   background-color: white;
-
   border-radius: 20px;
+  border-bottom: 5px cornflowerblue solid;
+  border-left: 5px cornflowerblue solid;
 }
 
 .stats-title {

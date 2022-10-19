@@ -21,7 +21,7 @@ const typeColors = {
   fairy: "#D685AD",
 };
 
-//Recoge 
+//Recoge principales datos de la API
 function getAllPokemons() {
   return fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
     .then((response) => response.json())
@@ -70,7 +70,6 @@ const findStats = (pokemonName, card) => {
         const numbersStats$$ = document.createElement("p");
         numbersStats$$.textContent = specificStat.base_stat;
         divStats$$.appendChild(numbersStats$$);
-
         // console.log("Stats ", specificStat.base_stat);
       }
       card.appendChild(divStats$$);
@@ -158,6 +157,7 @@ function searchOnePokemon() {
         const searchedPokemon = ALL_POKEMONS_INFO.filter(
           (poke) => poke.name === pokemon.name
         );
+
         renderPokemons(searchedPokemon);
         inputSearcher.value = "";
       } else if (inputContent == "") {
@@ -170,9 +170,7 @@ function searchOnePokemon() {
 // Funcion que arranca la web
 async function init() {
   // console.log("Cargado mi DOM, ejecuto JS");
-
   const allPokemons = await getAllPokemons();
-  // console.log("allPokemons" , allPokemons)
 
   for (const pokemon of allPokemons) {
     const pokemonIndividualInfo = await getOnePokemon(pokemon.url);
@@ -187,7 +185,7 @@ async function init() {
   //Buscar un pokemon
   searchOnePokemon();
 
-  //Desplegar stat
+  //Desplegar stats
   displayStats();
 }
 
